@@ -11,42 +11,34 @@ let cleanroom=()=>{
 
 
 let removegarbage=(p)=>{
-    const user=[1,2,3,4,5];
+ 
     return new Promise((resolve,reject)=>{
-        let array=[];
-        async.each(user,function(data,callback){
-         array.push(data);
-         callback();
-        },function(err){
-            resolve(array);
-        })
+      resolve(p+"     remove garbage");
     })
 }
 
 
 let winicecream=(p)=>{
-    return new Promise((resolve,reject)=>{
-        resolve(p);
-    })
+   return new Promise((resolves,rejects)=>{
+        
+ const datas=new Promise((resolve,reject)=>{
+     resolve(p+"    pour it");
+ })
+ 
+ 
+  datas.then((result)=>{
+     resolves(result+"     win icecream")
+ })
+ 
+ 
+     })
 }
 
 
-const data=()=>{
-    
-        return  cleanroom()
-        .then(removegarbage)
-        .then(winicecream)
-        .then((d)=>{return d})
-    
-        
-    }
 
 
-data().then(d=>console.log(d));
 
-
-/*
-const data=()=>{
+/*const data=()=>{
 
     return  cleanroom()
     .then((d)=>{return removegarbage( d ) })
@@ -57,4 +49,13 @@ const data=()=>{
 }
 */
 
+const data=async()=>{
+        const a= await cleanroom();
+        const b=await removegarbage(a);
+        const c=await winicecream(b);
+        return c
+         }
 
+
+
+data().then(d=>console.log("d  "+d));
